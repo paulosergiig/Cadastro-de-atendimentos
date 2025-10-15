@@ -1,0 +1,26 @@
+# Pastas do ambiente virtual
+venv/
+env/
+.venv/
+
+# Arquivos de bytecode Python
+*.pyc
+__pycache__/
+
+# Arquivos de log e banco de dados temporários
+*.log
+*.sqlite3
+
+# Arquivos gerados pelo editor/IDE (ex: VS Code, PyCharm)
+.idea/
+.vscode/
+
+# Arquivos de instalação e distribuição
+dist/
+build/
+*.egg-info/
+
+# Arquivos de configuração de segurança/credenciais (MUITO IMPORTANTE!)
+*.key
+*.pem
+.env
