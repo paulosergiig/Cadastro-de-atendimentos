@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{% if form.instance.pk %}Editar Paciente{% else %}Novo Paciente{% endif %}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>{% if form.instance.pk %}Editar Dados de {{ patient.nome_paciente }}{% else %}Cadastrar Novo Paciente{% endif %}</h1>
+    <div class="card">
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-success">Salvar</button>
+                    <a href="{% url 'patients:patient_list' %}" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

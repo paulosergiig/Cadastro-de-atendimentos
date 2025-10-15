@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Página Inicial{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">Olá, {{ request.user.therapist_profile.nome_completo|default:request.user.username }}!</h1>
+            <p class="lead">Bem-vindo(a) ao ClinicManager.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card text-white bg-primary h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Fichas de Evolução Hoje</h5>
+                    <p class="card-text display-4">{{ fichas_hoje_count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card text-white bg-success h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Total de Pacientes Ativos</h5>
+                    <p class="card-text display-4">{{ pacientes_ativos_count }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>Acesso Rápido</h2>
+            <div class="list-group">
+                <a href="{% url 'patients:patient_list' %}" class="list-group-item list-group-item-action">
+                    <i class="fas fa-users"></i> Ver Todos os Pacientes
+                </a>
+                <a href="{% url 'patients:patient_create' %}" class="list-group-item list-group-item-action">
+                    <i class="fas fa-user-plus"></i> Cadastrar Novo Paciente
+                </a>
+                 <a href="{% url 'patients:export_form' %}" class="list-group-item list-group-item-action">
+                    <i class="fas fa-file-excel"></i> Exportar Relatórios
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

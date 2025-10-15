@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Gerenciar Terapeutas{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Terapeutas Cadastrados</h1>
+        <a href="{% url 'accounts:therapist_create' %}" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Novo Terapeuta
+        </a>
+    </div>
+    
+    {% include 'partials/_messages.html' %}
+
+    <div class="card">
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                {% for terapeuta in terapeutas %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="badge" style="background-color: {{ terapeuta.cor_hex }};">&nbsp;</span>
+                        <strong>{{ terapeuta.nome_completo }}</strong> ({{ terapeuta.user.username }})
+                        <br>
+                        <small class="text-muted">{{ terapeuta.especialidade }}</small>
+                    </div>
+                    <div>
+                        <form action="{% url 'accounts:therapist_reset_password' terapeuta.pk %}" method="post" class="d-inline" onsubmit="return confirm('Tem certeza que deseja gerar uma nova senha temporária para este usuário?');">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm btn-secondary">Resetar Senha</button>
+                        </form>
+                        <a href="{% url 'accounts:therapist_update' terapeuta.pk %}" class="btn btn-sm btn-info">Editar</a>
+                        <a href="{% url 'accounts:therapist_delete' terapeuta.pk %}" class="btn btn-sm btn-danger">Remover</a>
+                    </div>
+                </li>
+                {% empty %}
+                <li class="list-group-item">Nenhum terapeuta cadastrado.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

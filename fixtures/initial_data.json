@@ -1,0 +1,66 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$yourhashhere$...change...",
+    "is_superuser": true,
+    "username": "supervisor",
+    "is_staff": true,
+    "is_active": true
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$anotherhash$...",
+    "is_superuser": false,
+    "username": "terapeuta.ana",
+    "is_staff": false,
+    "is_active": true
+  }
+},
+{
+  "model": "accounts.terapeuta",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "nome_completo": "Dr. Supervisor",
+    "especialidade": "Administrador",
+    "cor_hex": "#0d6efd",
+    "must_change_password": false
+  }
+},
+{
+  "model": "accounts.terapeuta",
+  "pk": 2,
+  "fields": {
+    "user": 2,
+    "nome_completo": "Ana Souza",
+    "especialidade": "Fisioterapeuta",
+    "cor_hex": "#198754",
+    "must_change_password": true
+  }
+},
+{
+  "model": "patients.patient",
+  "pk": 1,
+  "fields": {
+    "nome_paciente": "Carlos Andrade",
+    "nome_responsavel": "Maria Andrade",
+    "data_nascimento": "2015-05-20",
+    "terapeuta": 2
+  }
+},
+{
+  "model": "patients.patient",
+  "pk": 2,
+  "fields": {
+    "nome_paciente": "Beatriz Lima",
+    "nome_responsavel": "João Lima",
+    "data_nascimento": "2018-11-10",
+    "terapeuta": 2
+  }
+}
+]

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Confirmar Remoção{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Remover Terapeuta</h1>
+    <p>Você tem certeza que deseja remover o terapeuta <strong>{{ object.nome_completo }}</strong>?</p>
+    <p class="text-danger">Atenção: Esta ação não pode ser desfeita. O usuário associado também será removido.</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sim, tenho certeza</button>
+        <a href="{% url 'accounts:therapist_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
